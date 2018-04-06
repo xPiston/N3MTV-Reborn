@@ -1,0 +1,112 @@
+<html>
+    <head>
+    	<title>Chargement en cours | N3MTV - Partage</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- </head> -->
+		
+    <body>
+		<audio autoplay="" id="Loading" loop="" volume="0.2"><source src="music/Loading.ogg" type="audio/ogg" />
+			<!-- If you want change the sound please, convert your sound in .ogg and put this in music folder  and change Loading.ogg to your sound .ogg-->
+			<source src="music/Loading.ogg" type="audio/ogg">
+		</audio>
+		
+		<center><h1>N3MTV - VERSION PARTAGÉ - FXSERVER</h1>
+		<h2>Pour suivre l'évolution du serveur, rendez-vous sur <b>https://www.twitch.tv/n3mtv ou http://nemesis.mtxserv.fr/n3mtv/</b></h2></center>
+		
+		<div class="dank-ass-loader">
+			<div class="row">
+				<div class="arrow up outer outer-18"></div>
+				<div class="arrow down outer outer-17"></div>
+				<div class="arrow up outer outer-16"></div>
+				<div class="arrow down outer outer-15"></div>
+				<div class="arrow up outer outer-14"></div>
+			</div>
+			<div class="row">
+				<div class="arrow up outer outer-1"></div>
+				<div class="arrow down outer outer-2"></div>
+				<div class="arrow up inner inner-6"></div>
+				<div class="arrow down inner inner-5"></div>
+				<div class="arrow up inner inner-4"></div>
+				<div class="arrow down outer outer-13"></div>
+				<div class="arrow up outer outer-12"></div>
+			</div>
+			<div class="row">
+				<div class="arrow down outer outer-3"></div>
+				<div class="arrow up outer outer-4"></div>
+				<div class="arrow down inner inner-1"></div>
+				<div class="arrow up inner inner-2"></div>
+				<div class="arrow down inner inner-3"></div>
+				<div class="arrow up outer outer-11"></div>
+				<div class="arrow down outer outer-10"></div>
+			</div>
+			<div class="row">
+				<div class="arrow down outer outer-5"></div>
+				<div class="arrow up outer outer-6"></div>
+				<div class="arrow down outer outer-7"></div>
+				<div class="arrow up outer outer-8"></div>
+				<div class="arrow down outer outer-9"></div>
+			</div>
+		</div>
+		
+		<div class='loader'>
+			
+			<div class="fix">
+				<h3 id="loading_text">Chargement, veuillez patienter...</h3>
+				<div class="loadbar"><div class="scroll thingy"></div></div>
+			</div>
+		</div>
+		
+		<img src="http://worthprods.com/images/gta5.png" alt="" id="gta5_logo" height="104" width="128" />
+
+		<script>
+			var vid = document.getElementById("Loading");
+			vid.volume = 0.2
+		</script>
+			
+		<!-- Script of fivem keks loading screen. !--> 			
+		<script type="text/javascript">
+		var count = 0;
+		var thisCount = 0;
+		const handlers = {
+			startInitFunctionOrder(data)
+			{
+				count = data.count;
+
+				document.querySelector('.letni h3').innerHTML += emoji[data.type][data.order - 1] || '';
+			},
+
+			initFunctionInvoking(data)
+			{
+				document.querySelector('.thingy').style.left = '0%';
+				document.querySelector('.thingy').style.width = ((data.idx / count) * 100) + '%';
+			},
+
+			startDataFileEntries(data)
+			{
+				count = data.count;
+
+				document.querySelector('.letni h3').innerHTML += "\u{1f358}";
+			},
+
+			performMapLoadFunction(data)
+			{
+				++thisCount;
+
+				document.querySelector('.thingy').style.left = '0%';
+				document.querySelector('.thingy').style.width = ((thisCount / count) * 100) + '%';
+			},
+
+			onLogLine(data)
+			{
+				document.querySelector('.letni p').innerHTML = data.message + "..!";
+			}
+		};
+
+		window.addEventListener('message', function(e)
+		{
+			(handlers[e.data.eventName] || function() {})(e.data);
+		});
+		</script>
+ 
+    </body>
+</html>
